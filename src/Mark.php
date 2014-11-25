@@ -43,6 +43,16 @@ class Mark {
 		return isset($this->key);
 	}
 
+	public function toArray() {
+		return [
+			'name'        => $this->name,
+			'elapsed'     => $this->elapsed,
+			'memory'      => $this->memory,
+			'time_diff'   => $this->time_diff,
+			'memory_diff' => $this->memory_diff,
+		];
+	}
+
 }
 
 // EOF

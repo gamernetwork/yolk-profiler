@@ -48,7 +48,7 @@ class Profiler implements ProfilerInterface {
 
 	public function reset( $time = null, $memory = null ) {
 
-		$memory = isset($memory) ? memory_get_usage() : $memory;
+		$memory = isset($memory) ? $memory : memory_get_usage();
 
 		// create and start internal timer
 		$this->timers = [
@@ -57,7 +57,7 @@ class Profiler implements ProfilerInterface {
 
 		$this->timers['']->start($time);
 
-		$this->marks['start'] = new ProfilerMark(
+		$this->marks['start'] = new Mark(
 			'start',
 			0,
 			$memory,
@@ -117,13 +117,17 @@ class Profiler implements ProfilerInterface {
 		return isset($this->timers[$timer]) ? $this->timers[$timer]->getElapsed() : 0;
 	}
 
+	public function getTotalElapsed( $timer = '' ) {
+		return isset($this->timers[$timer]) ? $this->timers[$timer]->getTotalElapsed() : 0;
+	}
+
 	public function mark( $name = '' ) {
 
 		$prev    = end($this->marks);
-		$elapsed = $this->timers['']->getElapsed();
+		$elapsed = $this->timers['']->getTotalElapsed();
 		$memory  = memory_get_usage();
 
-		$this->marks[$name] = new ProfilerMark(
+		$this->marks[$name] = new Mark(
 			$name,
 			$elapsed,
 			$memory,
@@ -159,23 +163,35 @@ class Profiler implements ProfilerInterface {
 	public function getData() {
 
 		$report = [
-			'duration' => round($this->timers['']->getElapsed(), 6),
+			'duration' => round($this->timers['']->getTotalElapsed(), 6),
 			'memory'   => memory_get_peak_usage(),
 			'timers'   => [],
-			'marks'    => $this->marks,
+			'marks'    => [],
 			'queries'  => $this->queries,
 			'meta'     => $this->meta,
 			'includes' => get_included_files()
 		];
 
 		foreach( $this->timers as $name => $timer ) {
-			$report['timers'][$name] = round($timer->getElapsed(), 6);
+			$report['timers'][$name] = round($timer->getTotalElapsed(), 6);
 		}
 		unset($report['timers']['']);
 		ksort($report['timers']);
 
+		foreach( $this->marks as $name => $mark ) {
+			$report['marks'][$name] = $mark->toArray();
+			unset($report['marks'][$name]['name']);
+		}
+
 		return $report;
 
+	}
+
+	public function getHTML() {
+		ob_start();
+		$report = $this->getData();
+		include __DIR__. '/report.php';
+		return ob_get_clean();
 	}
 
 }
