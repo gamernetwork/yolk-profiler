@@ -31,8 +31,8 @@ class Timer implements TimerInterface {
 	protected $elapsed;
 
 	public function __construct() {
-		$this->started = 0;
-		$this->elapsed = 0;
+		$this->started = (float) 0;
+		$this->elapsed = (float) 0;
 	}
 
 	/**
@@ -43,7 +43,7 @@ class Timer implements TimerInterface {
 	public function start( $time = null ) {
 
 		if( !$this->started )
-			$this->started = $time ?: microtime(true);
+			$this->started = $time ?: (float) microtime(true);
 
 		return $this;
 
@@ -57,7 +57,7 @@ class Timer implements TimerInterface {
 
 		if(  $this->started ) {
 			$this->elapsed += microtime(true) - $this->started;
-			$this->started = 0;
+			$this->started = (float) 0;
 		}
 
 		return $this;
@@ -77,7 +77,7 @@ class Timer implements TimerInterface {
 	 * @return float
 	 */
 	public function getElapsed( $total = false ) {
-		return $this->started ? (microtime(true) - $this->started) : 0;
+		return $this->started ? (microtime(true) - $this->started) : (float) 0;
 	}
 
 	/**

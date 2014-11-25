@@ -114,11 +114,11 @@ class Profiler implements ProfilerInterface {
 	}
 
 	public function getElapsed( $timer = '' ) {
-		return isset($this->timers[$timer]) ? $this->timers[$timer]->getElapsed() : 0;
+		return isset($this->timers[$timer]) ? $this->timers[$timer]->getElapsed() : 0.0;
 	}
 
 	public function getTotalElapsed( $timer = '' ) {
-		return isset($this->timers[$timer]) ? $this->timers[$timer]->getTotalElapsed() : 0;
+		return isset($this->timers[$timer]) ? $this->timers[$timer]->getTotalElapsed() : 0.0;
 	}
 
 	public function mark( $name = '' ) {
@@ -135,7 +135,7 @@ class Profiler implements ProfilerInterface {
 			$memory - $prev->memory
 		);
 
-		return $this;
+		return $this->marks[$name];
 
 	}
 

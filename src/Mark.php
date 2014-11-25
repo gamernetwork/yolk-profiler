@@ -40,7 +40,7 @@ class Mark {
 	}
 
 	public function __isset( $key ) {
-		return isset($this->key);
+		return isset($this->$key);
 	}
 
 	public function toArray() {
