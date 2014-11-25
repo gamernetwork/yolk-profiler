@@ -1,5 +1,5 @@
 
-<style id="yolk-style" type="text/css">
+<style id="yolk-profiler" type="text/css">
 #yolk-container {
 	clear:both;
 	color: #dddddd;
@@ -119,12 +119,9 @@
 	<script type="text/javascript">
 		
 		addEvent(window, 'load', loadYolkCSS);
-		//addEvent(window, 'click', loadYolkCSS);
 		
 		function loadYolkCSS() {
-			//var sheet = document.createElement("style");
-			//sheet.setAttribute("type", "text/css");
-			var sheet = document.getElementById('yolk-style');
+			var sheet = document.getElementById('yolk-profiler');
 			sheet.parentNode.removeChild(sheet);
 			document.getElementsByTagName("head")[0].appendChild(sheet);
 			setTimeout(function(){document.getElementById("yolk-container").style.display = "block"}, 10);
@@ -226,7 +223,7 @@
 			<?php $i = 1; $total = 0; foreach( $report['queries'] as $query ) { ?>
 			<tr>
 				<td class="center caption"><?=$i++?></td>
-				<td class="left caption sql"><?=nl2br($query['sql'])?></td>
+				<td class="left caption sql"><?=nl2br($query['query'])?></td>
 				<td class="left caption">
 					<?php foreach( $query['params'] as $k => $v ) { ?>
 					<?="{$k} => {$v}<br />\n"?>
