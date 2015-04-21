@@ -5,11 +5,11 @@ A simple profiling library for benchmarking code execution speed, memory usage a
 
 ## Requirements
 
-This library requires only PHP 5.4 or later.
+This library requires only PHP 5.4 or later and the Yolk Contracts package (```gamernetwork/yolk-contracts```).
 
 ## Installation
 
-It is installable and autoloadable via Composer as gamer-network/yolk-profiler.
+It is installable and autoloadable via Composer as ```gamer-network/yolk-profiler```.
 
 Alternatively, download a release or clone this repository, and add the \yolk\profiler namespace to an autoloader.
 
