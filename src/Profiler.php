@@ -52,7 +52,7 @@ class Profiler implements ProfilerInterface {
 
 		// create and start internal timer
 		$this->timers = [
-			'' => new Timer('internal')
+			'' => new Timer()
 		];
 
 		$this->timers['']->start($time);
@@ -76,7 +76,7 @@ class Profiler implements ProfilerInterface {
 		if( !$timer ) return;
 
 		if( !isset($this->timers[$timer]) || $reset ) {
-			$this->timers[$timer] = new Timer($timer);
+			$this->timers[$timer] = new Timer();
 		}
 
 		$this->timers[$timer]->start($time);
@@ -87,22 +87,18 @@ class Profiler implements ProfilerInterface {
 
 	public function stop( $timer = null ) {
 
-		if( $timer === null ) {
+		if( !$timer ) {
 			// stop user-defined timers
 			foreach( $this->timers as $name => $timer ) {
-				if( $name && $timer->isRunning() ) {
+				if( $name )
 					$timer->stop();
-				}
 			}
 			// stop the internal timer last and mark the elapsed time
 			$this->timers['']->stop();
 			$this->mark('end');
 		}
-		elseif( $timer )  {
-			$timer = isset($this->timers[$timer]) ? $this->timers[$timer] : false;
-			if( $timer && $timer->isRunning() ) {
-				$timer->stop();
-			}
+		elseif( isset($this->timers[$timer]) )  {
+			$this->timers[$timer]->stop();
 		}
 
 		return $this;

@@ -55,7 +55,7 @@ class Timer implements TimerInterface {
 	 */
 	public function stop() {
 
-		if(  $this->started ) {
+		if( $this->started ) {
 			$this->elapsed += microtime(true) - $this->started;
 			$this->started = (float) 0;
 		}
