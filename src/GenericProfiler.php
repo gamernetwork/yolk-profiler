@@ -11,12 +11,13 @@
 
 namespace yolk\profiler;
 
-use yolk\contracts\profiler\ProfilerInterface;
+use yolk\contracts\profiler\Profiler;
+use yolk\contracts\profiler\Timer;
 
 /**
  * Simple profiler class for recording code execution time, memory usage and database queries.
  */
-class Profiler implements ProfilerInterface {
+class GenericProfiler implements Profiler {
 
 	/**
 	 * Array of timer instances.
@@ -52,7 +53,7 @@ class Profiler implements ProfilerInterface {
 
 		// create and start internal timer
 		$this->timers = [
-			'' => new Timer()
+			'' => new GenericTimer()
 		];
 
 		$this->timers['']->start($time);
@@ -76,7 +77,7 @@ class Profiler implements ProfilerInterface {
 		if( !$timer ) return;
 
 		if( !isset($this->timers[$timer]) || $reset ) {
-			$this->timers[$timer] = new Timer();
+			$this->timers[$timer] = new GenericTimer();
 		}
 
 		$this->timers[$timer]->start($time);

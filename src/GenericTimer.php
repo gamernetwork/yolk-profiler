@@ -11,12 +11,12 @@
 
 namespace yolk\profiler;
 
-use yolk\contracts\profiler\TimerInterface;
+use yolk\contracts\profiler\Timer;
 
 /**
  * Simple timer implementation.
  */
-class Timer implements TimerInterface {
+class GenericTimer implements Timer {
 
 	/**
 	 * Time last started.
