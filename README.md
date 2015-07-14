@@ -1,5 +1,6 @@
-
 # Yolk Profiler
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gamernetwork/yolk-profiler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gamernetwork/yolk-profiler/?branch=master)
 
 A simple profiling library for benchmarking code execution speed, memory usage and database queries.
 
