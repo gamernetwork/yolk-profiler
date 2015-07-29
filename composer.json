@@ -14,7 +14,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "gamernetwork/yolk-contracts": "1.*"
+        "gamernetwork/yolk-contracts": "dev-develop"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*",
