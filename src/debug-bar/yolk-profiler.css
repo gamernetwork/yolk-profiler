@@ -1,0 +1,153 @@
+
+#yolk-debug * {
+	margin: 0;
+	padding: 0;
+}
+
+#yolk-debug {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width:100%;
+	min-height: 2.834em;
+	z-index: 9999;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+
+#yolk-debug header {
+	height: 2.834em;
+	overflow: hidden;
+	background: #333;
+	color: #f9f9f9;
+}
+
+#yolk-debug header ul {
+	height: 100%;
+	overflow: hidden;
+}
+
+#yolk-debug header li {
+	float: left;
+	padding: 0.75em 1em;
+}
+
+#yolk-debug header li:last-child {
+	float: right;
+}
+
+#yolk-debug header li.btn,
+#yolk-debug header li.tab {
+	cursor: pointer;
+}
+
+#yolk-debug header li.tab:hover,
+#yolk-debug header li.tab.active {
+	background: #f9f9f9;
+	color: #333;
+}
+
+#yolk-debug header var {
+	font-style: normal;
+	margin-left: 0.5em;
+}
+
+#yolk-debug-body {
+	display: none;
+	background: #f9f9f9;
+	overflow-y: scroll;
+	position: relative;
+}
+
+#yolk-debug-resize {
+	height: 5px;
+	box-shadow: inset 0 5px 5px -5px #333;
+	cursor: ns-resize;
+}
+
+#yolk-debug section {
+	display: none;
+	position: absolute;
+	top:0;
+	width:100%;
+	padding: 2em;
+}
+
+#yolk-debug section h1 {
+	font-size: 2em;
+	margin-bottom: 0.5em;
+}
+
+
+#yolk-debug section table + h1 {
+	margin-top: 1.5em;
+}
+
+#yolk-debug section table {
+	max-width: 100%;
+}
+
+#yolk-debug section th,
+#yolk-debug section td {
+	padding: 0.5em 1em;
+	border-bottom: 1px solid #ccc;
+}
+
+#yolk-debug section ul ul {
+	margin-left:0.75em;
+	border-left: 1px solid #ccc;
+}
+
+#yolk-debug section ul ul ul {
+	margin-left:2em;
+}
+
+#yolk-debug section li {
+	line-height: 2em;
+}
+
+#yolk-debug section ul ul li:before {
+	content: "\2013";
+	padding-right: 0.5em;
+	color:#ccc;
+}
+
+#yolk-debug section var {
+	padding: 1px 5px;
+	margin-right: 1em;
+	background:#f9f2f4;
+	border-radius: 5px;
+	color: #c7254e;
+	color:#2f6f9f;
+
+	color:#31708f;
+	background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+}
+
+#yolk-queries th {
+}
+
+#yolk-queries tbody tr:hover {
+	background: #eee;
+}
+
+#yolk-queries .sql br {
+	display: none;
+}
+
+#yolk-queries .sql + td {
+	white-space: nowrap;
+	max-width: 25%;
+	line-height: 1.5em;
+}
+
+#yolk-queries var {
+	padding: 0 0.35em !important;
+}
+
+#yolk-queries td:last-child {
+	white-space: nowrap;
+}
