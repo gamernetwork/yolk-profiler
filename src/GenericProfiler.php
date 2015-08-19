@@ -14,12 +14,13 @@ namespace yolk\profiler;
 use yolk\contracts\profiler\Profiler;
 use yolk\contracts\profiler\Timer;
 
+use yolk\contracts\support\Dumpable;
 use yolk\contracts\support\Arrayable;
 
 /**
  * Simple profiler class for recording code execution time, memory usage and database queries.
  */
-class GenericProfiler implements Profiler {
+class GenericProfiler implements Profiler, Dumpable {
 
 	/**
 	 * Array of timer instances.
@@ -200,6 +201,24 @@ class GenericProfiler implements Profiler {
 		$report = $this->getData();
 		include __DIR__. '/debug-bar/main.php';
 		return ob_get_clean();
+	}
+
+	public function dump( $dumper = '\\yolk\\debug\\TextDumper', $depth = 1 ) {
+		if( $depth > 1 ) {
+			return sprintf(
+				"%s {\n%selapsed: %s ms\n%smemory : %s MB\n%squeries: %d\n%smarks  : %d\n%s}",
+				get_class($this),
+				str_repeat("\t", $depth),
+				number_format($this->getElapsed() * 1000),
+				str_repeat("\t", $depth),
+				number_format(memory_get_peak_usage() / 1024 / 1024, 3),
+				str_repeat("\t", $depth),
+				count($this->queries),
+				str_repeat("\t", $depth),
+				count($this->marks),
+				str_repeat("\t", $depth - 1)
+			);
+		}
 	}
 
 }
