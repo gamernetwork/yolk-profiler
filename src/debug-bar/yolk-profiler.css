@@ -27,6 +27,7 @@
 #yolk-debug header ul {
 	height: 100%;
 	overflow: hidden;
+	list-style-type: none;
 }
 
 #yolk-debug header li {
@@ -38,13 +39,13 @@
 	float: right;
 }
 
-#yolk-debug header li.btn,
-#yolk-debug header li.tab {
+#yolk-debug header li.yolk-btn,
+#yolk-debug header li.yolk-tab {
 	cursor: pointer;
 }
 
-#yolk-debug header li.tab:hover,
-#yolk-debug header li.tab.active {
+#yolk-debug header li.yolk-tab:hover,
+#yolk-debug header li.yolk-tab.active {
 	background: #f9f9f9;
 	color: #333;
 }

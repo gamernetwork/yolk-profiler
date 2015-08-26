@@ -33,10 +33,10 @@ if( !function_exists('yolk_profiler_dump') ) {
 
 	<header>
 		<ul>
-			<li title="Yolk Debug Bar" class="btn">
+			<li title="Yolk Debug Bar" class="yolk-btn">
 				<i class="fa fa-circle"></i>
 			</li>
-			<li title="Execution Time" class="tab" data-tab="yolk-timeline">
+			<li title="Execution Time" class="yolk-tab" data-tab="yolk-timeline">
 				<i class="fa fa-clock-o"></i>
 				<var><?=number_format($report['duration'] * 1000)?> ms</var>
 			</li>
@@ -44,20 +44,20 @@ if( !function_exists('yolk_profiler_dump') ) {
 				<i class="fa fa-signal"></i>
 				<var><?=number_format($report['memory'] / 1024 / 1024, 3)?> MB</var>
 			</li>
-			<li title="Database Queries" class="tab" data-tab="yolk-queries">
+			<li title="Database Queries" class="yolk-tab" data-tab="yolk-queries">
 				<i class="fa fa-database"></i>
 				<var><?=count($report['queries'])?></var>
 			</li>
-			<li title="Request Parameters" class="tab" data-tab="yolk-request">
+			<li title="Request Parameters" class="yolk-tab" data-tab="yolk-request">
 				<i class="fa fa-download"></i>
 			</li>
-			<li title="Twig Info" class="tab" data-tab="yolk-twig">
+			<li title="Twig Info" class="yolk-tab" data-tab="yolk-twig">
 				<i class="fa fa-file-code-o"></i>
 			</li>
-			<li title="Configuration" class="tab" data-tab="yolk-config">
+			<li title="Configuration" class="yolk-tab" data-tab="yolk-config">
 				<i class="fa fa-cog"></i>
 			</li>
-			<li title="Hide" class="btn">
+			<li title="Hide" class="yolk-btn">
 				<i class="fa fa-close"></i>
 			</li>
 		</ul>
