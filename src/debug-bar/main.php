@@ -1,5 +1,8 @@
 <?php
 
+if( empty($report) )
+	return;
+
 if( !function_exists('yolk_profiler_dump') ) {
 		
 	function yolk_profiler_dump( array $data ) {
@@ -30,6 +33,8 @@ if( !function_exists('yolk_profiler_dump') ) {
 ?>
 
 <div id="yolk-debug">
+
+	<div id="yolk-debug-resize"></div>
 
 	<header>
 		<ul>
@@ -67,10 +72,6 @@ if( !function_exists('yolk_profiler_dump') ) {
 		<?php include __DIR__. '/timeline.php'; ?>
 		<?php include __DIR__. '/queries.php'; ?>
 		<?php include __DIR__. '/config.php'; ?>
-	</div>
-
-	<div id="yolk-debug-resize">
-
 	</div>
 
 	<style>
