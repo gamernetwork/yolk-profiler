@@ -22,7 +22,7 @@
 		<table>
 			<tr>
 				<th>&nbsp;</th>
-				<th class="left">Step</th>
+				<th>Step</th>
 				<th>Elapsed</th>
 				<th>Diff</th>
 				<th>Memory</th>
@@ -30,8 +30,8 @@
 			</tr>
 			<?php $i = 1; foreach( $report['marks'] as $name => $mark ) { ?>
 			<tr>
-				<td class="center caption"><?=$i++?></td>
-				<td class="left caption"><?=$name?></td>
+				<td><?=$i++?></td>
+				<td><?=$name?></td>
 				<td><?=number_format($mark['elapsed'] * 1000, 3)?> ms</td>
 				<td><?=number_format($mark['time_diff'] * 1000, 3)?> ms</td>
 				<td><?=number_format($mark['memory'] / 1024 / 1024, 3)?> MB</td>

@@ -2,6 +2,7 @@
 #yolk-debug * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 #yolk-debug {
@@ -13,9 +14,11 @@
 	min-height: 2.834em;
 	z-index: 9999;
 	overflow: hidden;
+	font-family: Arial;
 	font-size: 12px;
+	color: #444;
+	line-height: 1.35;
 }
-
 
 #yolk-debug header {
 	height: 2.834em;
@@ -33,6 +36,7 @@
 #yolk-debug header li {
 	float: left;
 	padding: 0.75em 1em;
+	height: 100%;
 }
 
 #yolk-debug header li:last-child {
@@ -81,19 +85,26 @@
 	margin-bottom: 0.5em;
 }
 
-
+#yolk-debug section div + div,
 #yolk-debug section table + h1 {
 	margin-top: 1.5em;
 }
 
 #yolk-debug section table {
 	max-width: 100%;
+	border-collapse: collapse;
 }
 
 #yolk-debug section th,
 #yolk-debug section td {
 	padding: 0.5em 1em;
 	border-bottom: 1px solid #ccc;
+	text-align: left;
+    vertical-align: middle;
+}
+
+#yolk-debug section ul {
+	list-style-type: none;
 }
 
 #yolk-debug section ul ul {
@@ -130,6 +141,12 @@
 
 #yolk-queries th {
 }
+
+#yolk-queries th:first-child,
+#yolk-queries td:first-child {
+	text-align: center;
+}
+
 
 #yolk-queries tbody tr:hover {
 	background: #eee;
